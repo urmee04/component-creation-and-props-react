@@ -48,7 +48,7 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
       {/* Optional children content */}
       {children && <div className="mt-4">{children}</div>}
 
-      {/* Conditionally show Edit button if onEdit is passed */}
+      {/* conditionally show Edit button if onEdit is passed */}
       {onEdit && (
         <button
           onClick={() => onEdit(user.id)}
