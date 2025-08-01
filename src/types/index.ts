@@ -8,3 +8,20 @@ export interface AlertBoxProps {
   onClose?: () => void; // Optional: callback when close button is clicked
   children?: React.ReactNode; // Optional: additional content inside alert
 }
+
+//define the props expected by the UserProfileCard component
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  avatarUrl?: string;
+}
+
+export interface UserProfileCardProps {
+  user: User;
+  showEmail?: boolean;
+  showRole?: boolean;
+  onEdit?: (userId: string) => void;
+  children?: React.ReactNode;
+}
