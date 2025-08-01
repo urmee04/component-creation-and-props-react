@@ -1,24 +1,44 @@
 import { useState } from "react";
 import "./App.css";
 import { AlertBox } from "./components/AlertBox/AlertBox";
+import type { User } from "../src/types";
+import { UserProfileCard } from "./components/UserProfileCard/UserProfileCard";
 
 function App() {
   //useState hook to control visibility of the alert
   const [showAlert, setShowAlert] = useState(true);
 
+  //sample user data to pass to UserProfileCard
+  const user: User = {
+    id: "1",
+    name: "Romana Akter",
+    email: "urmee04sust@gmail.com",
+    role: "Software Engineer",
+    avatarUrl: "https://avatar.iran.liara.run/username?username=RA",
+  };
+
   return (
     <>
-      {/* conditionally render the AlertBox when showAlert is true */}
+      {/* AlertBox Component */}
       {showAlert && (
         <AlertBox
-          type="success" //set the alert type (color and icon style)
-          message="Your profile has been updated successfully!" // Main message
-          onClose={() => setShowAlert(false)} //hide the alert when close is clicked
+          type="success"
+          message="Your profile has been updated successfully!"
+          onClose={() => setShowAlert(false)}
         >
-          {/* optional child content inside the alert */}
           <p className="text-sm">You can now continue using the application.</p>
         </AlertBox>
       )}
+
+      {/* UserProfileCard Component */}
+      <UserProfileCard
+        user={user}
+        showEmail={true}
+        showRole={true}
+        onEdit={(userId) => alert(`Editing user ${userId}`)}
+      >
+        <div className="text-sm text-gray-500">Last login: 2 hours ago</div>
+      </UserProfileCard>
     </>
   );
 }
